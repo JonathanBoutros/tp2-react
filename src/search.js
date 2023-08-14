@@ -10,7 +10,6 @@ const Search = ({ searchTerm, handleSearch }) => {
                 <input
                 type="text"
                 className="form-control"
-                //commentaire
                 placeholder="Rechercher"
                 value={searchTerm}
                 onChange={handleSearch}
