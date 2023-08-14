@@ -66,6 +66,7 @@ const Details = () => {
             <button onClick={() => addToWishlist(detail.id )}>Ajouter a la wishlist</button>
         </div>
         //commentaire
+        //commentaire2
     ); 
 };
 
