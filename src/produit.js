@@ -4,6 +4,7 @@ import CategoryFilter from './categorieFilter';
 import PriceFilter from './priceFilter';
 import ColorFilter from './colorFilter';
 import Search from './search';
+import './css/produits.css';
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -68,7 +69,7 @@ const ProductList = () => {
       (!range1 || (product.price >= 0 && product.price <= 100)) &&
       (!range2 || (product.price >= 101 && product.price <= 1000)) &&
       (!range3 || product.price >= 1001);
-    
+
     const searchFilter = product.name.toLowerCase().includes(searchTerm.toLowerCase())
 
     console.log('searchFilter:', searchFilter);
@@ -99,10 +100,10 @@ const ProductList = () => {
 
   return (
     <div className="container-fluid">
-              <Search
-                searchTerm={searchTerm}
-                handleSearch={handleSearch} 
-              />  
+      <Search
+        searchTerm={searchTerm}
+        handleSearch={handleSearch}
+      />
       <div className="row">
         <div className="col-md-3" style={{ minWidth: "300px" }}>
           <h1 className="text-center">Filter</h1>
@@ -114,14 +115,14 @@ const ProductList = () => {
                 handleCategoryChange={handleCategoryChange}
               />
 
-              <PriceFilter 
-                priceRange={priceRange} 
+              <PriceFilter
+                priceRange={priceRange}
                 handlePriceChange={handlePriceChange}
               />
 
-              <ColorFilter 
-                couleurs={couleurs} 
-                handleColorChange={handleColorChange} 
+              <ColorFilter
+                couleurs={couleurs}
+                handleColorChange={handleColorChange}
               />
 
             </div>
