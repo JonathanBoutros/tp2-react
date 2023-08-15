@@ -1,0 +1,34 @@
+.content {
+}
+
+.all-products {
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+  margin-top: 10px;
+}
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* card */
+.full-card {
+  object-fit: cover;
+  height: 30rem;
+}
+.card-img-top {
+  margin-top: 5%;
+  object-fit: cover;
+  width: 100%;
+  height: 17rem;
+}
+.coffee-body {
+  margin-top: 10%;
+}

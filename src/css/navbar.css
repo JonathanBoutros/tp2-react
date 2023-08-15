@@ -1,0 +1,13 @@
+.navbar-brand {
+  margin-left: 20px;
+}
+.navbar-nav {
+  margin-left: 50px;
+}
+a {
+  color: white !important;
+  transition: ease 0.5s !important;
+}
+a:hover {
+  color: rgb(30, 30, 30) !important;
+}

@@ -98,15 +98,18 @@ const ProductList = () => {
       .catch((error) => console.error('Error fetch:', error));
   }, []);
 
+  // Filter
   return (
     <div className="container-fluid">
+      <div className='header'>
+        <img src='https://images.pexels.com/photos/702251/pexels-photo-702251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='coffee'></img>
+      </div>
       <Search
         searchTerm={searchTerm}
         handleSearch={handleSearch}
       />
-      <div className="row">
-        <div className="col-md-3" style={{ minWidth: "300px" }}>
-          <h1 className="text-center">Filter</h1>
+      <div className="row content">
+        <div className="col-md-2" style={{ minWidth: "300px" }}>
           <div className="card">
             <div className="card-body">
 
@@ -128,17 +131,17 @@ const ProductList = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-9">
-          <h1 className="text-center">Product List</h1>
-          <div className="row">
+        {/* Product List */}
+        <div className="col-md-8">
+          <div className="row all-products">
             {filteredProducts.map((product) => (
-              <div className="col-md-4" key={product.id}>
-                <div className="card mb-4">
+              <div className="col-sm-4" key={product.id}>
+                <div className="card mb-4 full-card">
                   <img src={product.image} className="card-img-top" alt={product.name} />
-                  <div className="card-body">
+                  <div className="card-body coffee-body">
                     <h5 className="card-title">{product.name}</h5>
                     <p className="card-text">{product.price}$</p>
-                    <Link to={`/details/${product.id}`} className="btn btn-primary">View Details</Link>
+                    <Link to={`/details/${product.id}`} className="btn btn-danger">View Details</Link>
                   </div>
                 </div>
               </div>

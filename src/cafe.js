@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import './css/cafe.css';
 
 const CafeList = () => {
   const [cafes, setCafes] = useState([]);
@@ -28,14 +29,15 @@ const CafeList = () => {
   return (
     <>
       <h1>Café</h1>
-      <Link to={"/createCafe"}>Ajouter café</Link>
-      <div>
+      <button className="btn-create"><Link to={"/createCafe"} className="ajouter-cafe">Ajouter café</Link></button>
+
+      <div className="cofe-container">
         {cafes.map((cafe) => (
-          <div key={cafe.id}>
-            <img src={cafe.pictureUrl} alt={cafe.name} />
+          <div key={cafe.id} className="cofe">
+            <img src={cafe.pictureUrl} alt={cafe.name} className="cofe-img" />
             <p>{cafe.name}</p>
             <p>{cafe.description}</p>
-            <button onClick={() => removeCafe(cafe.id)}>Effacer</button>
+            <button className="delete-btn" onClick={() => removeCafe(cafe.id)}>Effacer</button>
           </div>
         ))}
       </div>
