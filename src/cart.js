@@ -23,7 +23,7 @@ const Cart = () => {
       console.error('Error delete product cart:', error);
     }
   };
-  // test dom
+
   const removeAll = async () => {
     try {
       const response = await fetch('https://insta-api-api.0vxq7h.easypanel.host/cart/clear', {
