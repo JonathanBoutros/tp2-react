@@ -46,8 +46,8 @@ const Wishlist = () => {
             {wishlists.map((wishlist) => (
                 <div key={wishlist.id}>
                 <img src={wishlist.image} alt={wishlist.name} />
-                <p>{wishlist.name}</p>
-                <p>{wishlist.price}$</p>
+                <p>name: {wishlist.name}</p>
+                <p>Prix: {wishlist.price}$</p>
                 <button onClick={() => removeFromWish(wishlist.id)}>Effacer</button>
                 </div>
             ))}

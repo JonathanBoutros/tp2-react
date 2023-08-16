@@ -7,6 +7,7 @@ const Details = () => {
     const [detail, setDetail] = useState([]);
     const { id } = useParams();
     const [quantity, setQuantity] = useState(1);
+    const [text, setText] = useState("");
 
   const handleQuantityChange = (event) => {
     const quantityChange = parseInt(event.target.value)
@@ -53,7 +54,25 @@ const Details = () => {
         console.error('Error ajout wishlist:', error);
       }
     };
-  
+
+    const popUpCart = () => {
+      addToCart(detail.id, quantity);
+      setText("ajout reussi au cart");
+
+      setTimeout(() => {
+        setText("");
+      }, 3000)
+    }
+
+    const popUpWish = () => {
+      addToWishlist(detail.id);
+      setText("ajout reussi a la Wishlist");
+
+      setTimeout(() => {
+        setText("");
+      }, 3000)
+    }
+
     return(
       <div className="container mt-5">
           <div className="row">
@@ -74,17 +93,18 @@ const Details = () => {
                       className="form-control mb-2 quantity"
                   />
                   <button
-                      onClick={() => addToCart(detail.id, quantity)}
+                      onClick={popUpCart}
                       className="btn btn-danger mr-2"
                   >
                       Add to Cart
                   </button>
                   <button
-                      onClick={() => addToWishlist(detail.id)}
+                      onClick={popUpWish}
                       className="btn btn-secondary"
                   >
                       Add to Wishlist
                   </button>
+                  <div>{text}</div>
               </div>
           </div>
       </div>
