@@ -133,7 +133,7 @@ const ProductList = () => {
         </div>
         {/* Product List */}
         <div className="col-md-8">
-          <div className="row all-products">
+          <div className="row">
             {filteredProducts.map((product) => (
               <div className="col-sm-4" key={product.id}>
                 <div className="card mb-4 full-card">
