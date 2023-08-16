@@ -104,9 +104,9 @@ const Details = () => {
                   >
                       Add to Wishlist
                   </button>
-                  <div>{text}</div>
               </div>
           </div>
+          <div>{text}</div>
       </div>
     ); 
 
