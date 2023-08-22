@@ -13,9 +13,13 @@ img {
 }
 
 /* card */
+
 .full-card {
-  object-fit: cover;
-  height: 30rem;
+  justify-content: center;
+  align-items: center;
+  height: 32rem;
+  margin-bottom: 20px;
+  padding: 0 !important;
 }
 .card-img-top {
   margin-top: 5%;
@@ -24,5 +28,34 @@ img {
   height: 17rem;
 }
 .coffee-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  width: 100%;
   margin-top: 10%;
+}
+.btn-detail {
+  background-color: rgb(171, 23, 0);
+  align-self: bottom;
+  width: 100%;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .header {
+    height: 300px;
+  }
+  .full-card {
+    height: auto;
+  }
+  .card-img-top {
+    height: 150px;
+  }
+}
+
+@media (max-width: 576px) {
+  .col-md-2 {
+    margin-bottom: 20px;
+  }
 }

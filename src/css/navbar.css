@@ -4,6 +4,9 @@
 .navbar-nav {
   margin-left: 50px;
 }
+.navbar {
+  background-color: rgb(171, 23, 0);
+}
 a {
   color: white !important;
   transition: ease 0.5s !important;
