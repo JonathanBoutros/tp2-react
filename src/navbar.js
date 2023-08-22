@@ -10,7 +10,7 @@ const Nav = () => {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-danger">
+        <nav className="navbar navbar-expand-lg navbar-light">
             <Link to={"/"} className="navbar-brand">RoastedCup</Link>
             <button
                 className={`navbar-toggler ${menuOpen ? '' : 'collapsed'}`}
