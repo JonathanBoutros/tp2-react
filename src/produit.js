@@ -109,7 +109,7 @@ const ProductList = () => {
         handleSearch={handleSearch}
       />
       <div className="row content">
-        <div className="col-md-2" style={{ minWidth: "300px" }}>
+        <div className="col-md-2 filter-body" style={{ minWidth: "300px" }}>
           <div className="card">
             <div className="card-body">
 
@@ -132,16 +132,16 @@ const ProductList = () => {
           </div>
         </div>
         {/* Product List */}
-        <div className="col-md-8">
+        <div className="col-lg-8 ">
           <div className="row all-products">
             {filteredProducts.map((product) => (
-              <div className="col-sm-4" key={product.id}>
+              <div className="col-xl-4 col-md-6 " key={product.id}>
                 <div className="card mb-4 full-card">
                   <img src={product.image} className="card-img-top" alt={product.name} />
                   <div className="card-body coffee-body">
                     <h5 className="card-title">{product.name}</h5>
                     <p className="card-text">{product.price}$</p>
-                    <Link to={`/details/${product.id}`} className="btn btn-danger">View Details</Link>
+                    <Link to={`/details/${product.id}`} className="btn btn-detail">View Details</Link>
                   </div>
                 </div>
               </div>
