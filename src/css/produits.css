@@ -1,14 +1,3 @@
-/* Rendu au stade de vouloir un dropdown pour le filter lorsque
-la résolution de l'écran est pour telephone */
-
-.content {
-}
-
-.all-products {
-  width: 100%;
-  margin: 0 auto;
-}
-
 .header {
   display: flex;
   justify-content: center;

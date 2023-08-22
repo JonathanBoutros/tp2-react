@@ -64,8 +64,9 @@ const Cart = () => {
         {cart.map((item) => (
           <div key={item.id}>
             <img src={item.image} alt={item.name} />
-            <p>{item.name}</p>
-            <p>{item.price}$</p>
+            <p>Nom: {item.name}</p>
+            <p>Prix: {item.price}$</p>
+            <label htmlFor='quantite'>Quantité:</label>
             <input
               type='number'
               value={item.quantity}

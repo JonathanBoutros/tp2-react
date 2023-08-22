@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import "./css/details.css"
 
 
 const Details = () => {
     const [detail, setDetail] = useState([]);
     const { id } = useParams();
     const [quantity, setQuantity] = useState(1);
+    const [text, setText] = useState("");
 
   const handleQuantityChange = (event) => {
     const quantityChange = parseInt(event.target.value)
@@ -52,19 +54,60 @@ const Details = () => {
         console.error('Error ajout wishlist:', error);
       }
     };
-  
+
+    const popUpCart = () => {
+      addToCart(detail.id, quantity);
+      setText("ajout reussi au cart");
+
+      setTimeout(() => {
+        setText("");
+      }, 3000)
+    }
+
+    const popUpWish = () => {
+      addToWishlist(detail.id);
+      setText("ajout reussi a la Wishlist");
+
+      setTimeout(() => {
+        setText("");
+      }, 3000)
+    }
+
     return(
-        <div>
-            <img src={detail.image} alt={detail.name} />
-            <p>{detail.name}</p>
-            <p>{detail.price}$</p>
-            <p>{detail.description}</p>
-            <p>{detail.category?.name}</p>
-            <p>{detail.color?.name}</p>
-            <input type='number' min="1" value={quantity} onChange={handleQuantityChange} />
-            <button onClick={() => addToCart(detail.id, quantity)}>Ajouter au Cart</button>
-            <button onClick={() => addToWishlist(detail.id )}>Ajouter a la wishlist</button>
-        </div>
+      <div className="container mt-5">
+          <div className="row">
+              <div className="col-md-6 border border-secondary">
+                  <img src={detail.image} alt={detail.name} className="img-fluid" />
+              </div>
+              <div className="col-md-6">
+                  <h2>{detail.name}</h2>
+                  <p className='row prix'><h3>{detail.price}</h3><span>$CA</span></p>
+                  <p>Description: {detail.description}</p>
+                  <p>Category: {detail.category?.name}</p>
+                  <p>Color: {detail.color?.name}</p>
+                  <input
+                      type='number'
+                      min="1"
+                      value={quantity}
+                      onChange={handleQuantityChange}
+                      className="form-control mb-2 quantity"
+                  />
+                  <button
+                      onClick={popUpCart}
+                      className="btn btn-danger mr-2"
+                  >
+                      Add to Cart
+                  </button>
+                  <button
+                      onClick={popUpWish}
+                      className="btn btn-secondary"
+                  >
+                      Add to Wishlist
+                  </button>
+              </div>
+          </div>
+          <div>{text}</div>
+      </div>
     ); 
 
 };
