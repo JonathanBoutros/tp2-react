@@ -97,7 +97,7 @@ const ProductList = () => {
       .then((data) => setProducts(data))
       .catch((error) => console.error('Error fetch:', error));
   }, []);
-
+  
   // Filter
   return (
     <div className="container-fluid">
