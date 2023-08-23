@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ProductList from './produit.js';
-import Details from './details.js';
-import Nav from './navbar.js';
-import Cart from './cart.js';
-import Wishlist from './wishlist.js';
-import Historique from './historique.js';
-import CafeList from './cafe.js';
-import AddCafe from './createCafe.js';
+import ProductList from './pageProduct/produit';
+import Details from './pageDetail/details';
+import Nav from './navbar';
+import Cart from './cart';
+import Wishlist from './wishlist';
+import Historique from './historique';
+import CafeList from './pageCafe/cafe';
+import AddCafe from './pageCafe/createCafe';
+import Checkout from './checkout';
 
 const App = () => {
   return (
@@ -16,7 +17,8 @@ const App = () => {
       <div>
         <nav><Nav /></nav>
         <Routes>
-          <Route path="createCafe" element={<AddCafe />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/createCafe" element={<AddCafe />} />
           <Route path="cafe" element={<CafeList />} />
           <Route path="/" element={<ProductList />} />
           <Route path="/details/:id" element={<Details />} />

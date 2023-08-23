@@ -4,7 +4,7 @@ import CategoryFilter from './categorieFilter';
 import PriceFilter from './priceFilter';
 import ColorFilter from './colorFilter';
 import Search from './search';
-import './css/produits.css';
+import '../css/produits.css';
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);

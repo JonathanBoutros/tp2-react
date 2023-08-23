@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import "./css/details.css"
-
+import "../css/details.css";
+import QuantityInput from './quantityInput';
+import CartButton from './cartButton';
+import WishlistButton from './wishlistButton';
+import SoldStatus from './soldStatus.js';
+import CommentSection from './commentSection';
 
 const Details = () => {
-    const [detail, setDetail] = useState([]);
-    const { id } = useParams();
-    const [quantity, setQuantity] = useState(1);
-    const [text, setText] = useState("");
-    const [cart, setCart] = useState([]);
-    const [wish, setWish] = useState([]);
-    const [sold, setSold] = useState([]);
-    const [allComments, setAllComments] = useState([]);
-    const [commentValue, setCommentValue] = useState("");
-    const [error, setError] = useState("");
+  const [detail, setDetail] = useState([]);
+  const { id } = useParams();
+  const [quantity, setQuantity] = useState(1);
+  const [text, setText] = useState("");
+  const [cart, setCart] = useState([]);
+  const [wish, setWish] = useState([]);
+  const [sold, setSold] = useState([]);
+  const [allComments, setAllComments] = useState([]);
+  const [commentValue, setCommentValue] = useState("");
+  const [error, setError] = useState("");
 
   const handleQuantityChange = (event) => {
     const quantityChange = parseInt(event.target.value)
-      setQuantity(quantityChange);
+    setQuantity(quantityChange);
   };
 
   const handleComment = (event) => {
@@ -138,60 +142,6 @@ const Details = () => {
         }
       };
 
-    const popUpCart = () => {
-      addToCart(detail.id, quantity);
-      setText("ajout reussi au cart");
-      window.location.reload();
-    }
-
-    const popUpWish = () => {
-      addToWishlist(detail.id);
-      setText("ajout reussi a la Wishlist");
-      window.location.reload();
-    }
-  
-    const enSold = () => {
-      const soldProduct = sold.find(item => item.id === detail.id);
-  
-      return (
-        <div>
-          {soldProduct ? (
-            <p>en sold: {soldProduct.discountPercent * 100}%</p>
-          ) : (
-            <p></p>
-          )}
-        </div>
-      );
-    };
-
-    const cartPresent = () => {
-      const isProductInCart = cart.some(item => item.id === detail.id);
-
-      return (
-        <div>
-          {isProductInCart ? (
-            <p>Ce produit est dans votre panier.</p>
-          ) : (
-            <p>Ce produit n'est pas dans votre panier.</p>
-          )}
-        </div>
-      );
-    }
-
-    const wishPresent = () => {
-      const isProductInCart = wish.some(item => item.id === detail.id);
-
-      return (
-        <div>
-          {isProductInCart ? (
-            <p>Ce produit est dans votre Wishlist.</p>
-          ) : (
-            <p>Ce produit n'est pas dans votre Wishlist.</p>
-          )}
-        </div>
-      );
-    }
-
     setTimeout(() => {
       setError("");
     }, 10000)
@@ -199,73 +149,65 @@ const Details = () => {
     setTimeout(() => {
       setText("");
     }, 3000)
+
+    const popUpWish = () => {
+      addToWishlist(detail.id);
+      setText("ajout reussi a la Wishlist");
+      window.location.reload();
+    }
     
+    const popUpCart = () => {
+      addToCart(id, quantity);
+      setText("ajout reussi au cart");
+      window.location.reload();
+    }
   
-    return(
+    return (
       <div className="container mt-5">
-          <div className="row">
-              <div className="col-md-6 border border-secondary">
-                  <img src={detail.image} alt={detail.name} className="img-fluid" />
-              </div>
-              <div className="col-md-6">
-                  <h2>{detail.name}</h2>
-                  <p className='row prix'><h3>{detail.price}</h3><span>$CA</span></p>
-                  <div>{enSold(detail.id)}</div>
-                  <p>Description: {detail.description}</p>
-                  <p>Category: {detail.category?.name}</p>
-                  <p>Color: {detail.color?.name}</p>
-                  <input
-                      type='number'
-                      min="1"
-                      value={quantity}
-                      onChange={handleQuantityChange}
-                      className="form-control mb-2 quantity"
-                  />
-                  <button
-                      onClick={popUpCart}
-                      className="btn btn-danger mr-2"
-                  >
-                      Add to Cart
-                  </button>
-                  <p>{cartPresent(detail.id)}</p>
-                  <button
-                      onClick={popUpWish}
-                      className="btn btn-secondary"
-                  >
-                      Add to Wishlist
-                  </button>
-                  <p>{wishPresent(detail.id)}</p>
-              </div>
-              <div>
-          <h3>Section Commentaire</h3>
-          <label htmlFor="commentInput">Commentaire:</label>
-          <br></br>
-          <input
-            type="text"
-            value={commentValue}
-            placeholder='Ajouter un commentaire...'
-            onChange={handleComment}
-          />
-          <button onClick={addComment}>Submit</button>
-          <div>
-            {allComments.map((comment) => (
-              <div className="col-sm-4" key={comment.id}>
-                <p>{comment.content}
-                  <button onClick={() => deleteComment(comment.id)}>
-                    Delete
-                  </button>
-                </p>
-              </div>
-            ))}
+        <div className="row">
+          <div className="col-md-6 border border-secondary">
+            <img src={detail.image} alt={detail.name} className="img-fluid" />
           </div>
-              </div>
+          <div className="col-md-6">
+            <h2>{detail.name}</h2>
+            <p className="row prix">
+              <h3>{detail.price}</h3>
+              <span>$CA</span>
+            </p>
+            <p>Description: {detail.description}</p>
+            <p>Category: {detail.category?.name}</p>
+            <p>Color: {detail.color?.name}</p>
+    
+            <QuantityInput
+              quantity={quantity}
+              handleQuantityChange={handleQuantityChange}
+            />
+            <CartButton
+              detail={detail}
+              cart={cart}
+              popUpCart={popUpCart}
+            />
+            <WishlistButton
+              detail={detail}
+              wish={wish}
+              popUpWish={popUpWish}
+            />
+            <SoldStatus detail={detail} sold={sold} />
+            <CommentSection
+              commentValue={commentValue}
+              handleComment={handleComment}
+              addComment={addComment}
+              allComments={allComments}
+              deleteComment={deleteComment}
+            />
+    
+            <div>{text}</div>
+            <div style={{ color: 'red' }}>{error}</div>
           </div>
-          <div>{text}</div>
-          <div style={{ color: 'red' }}>{error}</div>
-
+        </div>
       </div>
-    ); 
-
-};
-
-export default Details;
+    );
+    
+  };
+  
+  export default Details;
