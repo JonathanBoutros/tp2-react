@@ -174,9 +174,10 @@ const Details = () => {
               <h3>{detail.price}</h3>
               <span>$CA</span>
             </p>
-            <p>Description: {detail.description}</p>
-            <p>Category: {detail.category?.name}</p>
-            <p>Color: {detail.color?.name}</p>
+            <SoldStatus detail={detail} sold={sold} />
+            <p className="mb-3">Description: {detail.description}</p>
+            <p className="mb-3">Category: {detail.category?.name}</p>
+            <p className="mb-3">Color: {detail.color?.name}</p>
     
             <QuantityInput
               quantity={quantity}
@@ -192,7 +193,6 @@ const Details = () => {
               wish={wish}
               popUpWish={popUpWish}
             />
-            <SoldStatus detail={detail} sold={sold} />
             <CommentSection
               commentValue={commentValue}
               handleComment={handleComment}
@@ -207,6 +207,7 @@ const Details = () => {
         </div>
       </div>
     );
+    
     
   };
   
