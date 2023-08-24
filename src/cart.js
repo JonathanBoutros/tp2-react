@@ -77,7 +77,7 @@ const Cart = () => {
           </div>
         ))}
       </div>
-      <button><Link to={"/checkoutGet"}>Payer</Link></button>
+      <button><Link to={"/checkout"}>Payer</Link></button>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const PostCheckout = () => {
+const Checkout = () => {
     const [contactEmail, setContactEmail] = useState("");
     const [contactName, setContactName] = useState("");
     const [contactFirstName, setContactFirstName] = useState("");
@@ -19,83 +19,113 @@ const PostCheckout = () => {
     const [total, setTotal] = useState(0);
     const [cartId, setId] = useState(0);
 
+    const [error, setError] = useState("");
+    
+    const [formValid, setFormValid] = useState(true);
+
     const [shippingCost, setShippingCost] = useState(0);
 
     const [working, setWorking] = useState("");
-  
-    const [messageError, setMessageError] = useState("");
 
-    const clearMessageError = () => {
-        setTimeout(() => {
-        setMessageError("");
-        }, 5000);
-    };
-
+    const validateForm = () => {
+        if (
+            contactEmail === "" ||
+            contactName === "" ||
+            contactFirstName === "" ||
+            contactLastName === "" ||
+            addressLine1 === "" ||
+            city === "" ||
+            province === "" ||
+            postalCode === "" ||
+            contactPhone === "" ||
+            creditCardNumber === "" ||
+            creditCardExpirationMonth === 0 ||
+            creditCardExpirationYear === 0 ||
+            creditCardCvv === 0
+        ) {
+            setError("Please fill in all required fields.");
+            setFormValid(false);
+        } else if (creditCardNumber !== "4111-1111-1111-1111") {
+            setError("la carte de credit doit etre 4111-1111-1111-1111.");
+            setFormValid(false);
+        } else {
+            setError("");
+            setFormValid(true);
+        }
+    }
+    
     const submit = async () => {
         try {
 
+            validateForm();
+
+            if (!formValid) {
+                return;
+            }
+
             let calculatedTotal = total + shippingCost;
 
-            
             if (calculatedTotal > 100) {
                 calculatedTotal -= shippingCost;
                 setShippingCost(0);
             }
 
-        const requestData = {
-            contactEmail: contactEmail,
-            contactName: contactName,
-            contactFirstName: contactFirstName,
-            contactLastName: contactLastName,
-            addressLine1: addressLine1,
-            addressLine2: addressLine2,
-            city: city,
-            province: province,
-            postalCode: postalCode,
-            contactPhone: contactPhone,
-            creditCardNumber: creditCardNumber,
-            creditCardExpirationMonth: creditCardExpirationMonth,
-            creditCardExpirationYear: creditCardExpirationYear,
-            creditCardCvv: creditCardCvv,
-            shippingMode: shippingMode,
-            total: calculatedTotal,
-            cartId: cartId,
-        };
-    
-        const response = await fetch(
-            "https://insta-api-api.0vxq7h.easypanel.host/checkout",
-            {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(requestData),
+            const requestData = {
+                contactEmail: contactEmail,
+                contactName: contactName,
+                contactFirstName: contactFirstName,
+                contactLastName: contactLastName,
+                addressLine1: addressLine1,
+                addressLine2: addressLine2,
+                city: city,
+                province: province,
+                postalCode: postalCode,
+                contactPhone: contactPhone,
+                creditCardNumber: creditCardNumber,
+                creditCardExpirationMonth: creditCardExpirationMonth,
+                creditCardExpirationYear: creditCardExpirationYear,
+                creditCardCvv: creditCardCvv,
+                shippingMode: shippingMode,
+                total: calculatedTotal,
+                cartId: cartId,
+            };
+
+            const response = await fetch(
+                "https://insta-api-api.0vxq7h.easypanel.host/checkout",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(requestData),
+                }
+            );
+
+            if (response.ok) {
+                setWorking("Transaction réussie");
+                const data = await response.json();
+                console.log("votre transaction est un succès:", data);
             }
-        );
-    
-        if (response.ok) {
-            setWorking("Transaction réussie")
-            const data = await response.json();
-            console.log("votre transaction est un succès:", data);
-        }
         } catch (error) {
-        console.error("Error transaction:", error);
+            console.error("Error transaction:", error);
+            setError("Error dans la transaction: " + error.message);
+
         }
     };
-  
+
 
     useEffect(() => {
         fetch("https://insta-api-api.0vxq7h.easypanel.host/checkout")
-        .then((response) => response.json())
-        .then((data) => {
-            let calculatedTotal = 0;
-            data.products.forEach((product) => {
-            calculatedTotal += product.discountedPrice * product.quantity;
-            });
-            setTotal(calculatedTotal);
-            setId(data.cartId)
-        })
-        .catch((error) => console.error("Error fetch:", error));
+            .then((response) => response.json())
+            .then((data) => {
+                let calculatedTotal = 0;
+                data.products.forEach((product) => {
+                    calculatedTotal += product.discountedPrice * product.quantity;
+                });
+                setTotal(calculatedTotal);
+                setId(data.cartId);
+            })
+            .catch((error) => console.error("Error fetch:", error));
     }, []);
 
   
@@ -265,10 +295,10 @@ const PostCheckout = () => {
 
             <button onClick={() => submit()}>submit</button>
 
-            <div>{messageError}</div>
             <div>{working}</div>
+            <div style={{ color: "red" }}>{error}</div>
         </div>
   );
 };
 
-export default PostCheckout;
+export default Checkout;
