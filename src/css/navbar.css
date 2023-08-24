@@ -1,16 +1,23 @@
 .navbar-brand {
   margin-left: 20px;
+  font-weight: 600;
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .navbar-nav {
   margin-left: 50px;
 }
+.nav-item a {
+  font-family: var(--font1);
+  font-size: 20px;
+  color: black !important;
+  transition: ease 0.4s;
+}
+.nav-item a:hover {
+  color: var(--color2) !important;
+  transform: scale(1.1);
+}
 .navbar {
-  background-color: rgb(171, 23, 0);
-}
-a {
-  color: white !important;
-  transition: ease 0.5s !important;
-}
-a:hover {
-  color: rgb(30, 30, 30) !important;
+  background-color: rgb(255, 240, 228);
+  box-shadow: var(--shadow1);
 }

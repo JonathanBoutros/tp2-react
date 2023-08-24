@@ -28,19 +28,35 @@ const CafeList = () => {
 
   return (
     <>
-      <h1>Café</h1>
-      <button className="btn-create"><Link to={"/createCafe"} className="ajouter-cafe">Ajouter café</Link></button>
-
-      <div className="cofe-container">
-        {cafes.map((cafe) => (
-          <div key={cafe.id} className="cofe">
-            <img src={cafe.pictureUrl} alt={cafe.name} className="cofe-img" />
-            <p>{cafe.name}</p>
-            <p>{cafe.description}</p>
-            <button className="delete-btn" onClick={() => removeCafe(cafe.id)}>Effacer</button>
+      <div className="container-fluid">
+        <div className="list-content">
+          <div className="title-header">
+            <h1>Café</h1>
           </div>
-        ))}
+
+
+
+          <div className="cofe-container">
+            <div className="create-container">
+              <button className="btn-create"><Link to={"/createCafe"} className="ajouter-cafe">Ajouter café</Link></button>
+            </div>
+
+            {cafes.map((cafe) => (
+              <div key={cafe.id} className="cofe">
+                <img src={cafe.pictureUrl} alt={cafe.name} className="img-fluid cofe-img" />
+                <div className="cofe-content">
+                  <h4>{cafe.name}</h4>
+                  <span>{cafe.description}</span>
+                  <span className="line"></span>
+                  <span className="delete-btn" onClick={() => removeCafe(cafe.id)}>Effacer</span>
+                </div>
+              </div>
+            ))}
+
+          </div>
+        </div>
       </div>
+
     </>
   );
 }
