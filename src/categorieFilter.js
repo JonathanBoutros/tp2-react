@@ -1,4 +1,5 @@
 import React from "react";
+import './css/filter.css'
 
 const CategoryFilter = ({ categories, handleCategoryChange }) => {
   return (

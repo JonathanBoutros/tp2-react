@@ -4,9 +4,9 @@ import './css/search.css';
 
 const Search = ({ searchTerm, handleSearch }) => {
     return (
-        <div className="container-fluid mt-5">
+        <div className="container-fluid">
             <div className="row justify-content-center">
-                <div className="col-md-9 col-lg-8 input">
+                <div className="col-lg-12 input search-bar">
                     <div className="input-group mb-3">
                         <input
                             type="text"

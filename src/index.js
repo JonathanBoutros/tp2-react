@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './css/global-style.css';
 import ProductList from './produit.js';
 import Details from './details.js';
 import Nav from './navbar.js';
@@ -20,7 +21,7 @@ const App = () => {
           <Route path="cafe" element={<CafeList />} />
           <Route path="/" element={<ProductList />} />
           <Route path="/details/:id" element={<Details />} />
-          <Route path="/cart" element={<Cart />}/>
+          <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/historique" element={<Historique />} />
         </Routes>
@@ -33,7 +34,7 @@ const App = () => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App/>
+    <App />
   </React.StrictMode>
 );
 

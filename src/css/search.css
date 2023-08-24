@@ -1,9 +1,29 @@
+.container-fluid {
+  padding: 0 !important;
+}
 .search-bar {
-  width: 100%;
 }
 .container {
   width: 100%;
 }
 .input-group {
   width: 100%;
+}
+.form-control {
+  height: 50px;
+  border: 0;
+  background-color: rgb(255, 240, 228);
+  box-shadow: var(--shadow1);
+}
+
+.input-group-append .btn {
+  border: 0;
+  background-color: rgb(255, 240, 228);
+  box-shadow: var(--shadow1);
+  transition: ease 0.3s;
+}
+.input-group-append .btn:hover {
+  border: 0;
+  background-color: rgb(189, 33, 12);
+  transform: scale(1.1);
 }

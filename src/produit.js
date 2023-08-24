@@ -98,19 +98,19 @@ const ProductList = () => {
       .catch((error) => console.error('Error fetch:', error));
   }, []);
 
-  // Filter
+
   return (
     <div className="container-fluid">
       <div className='header'>
         <img src='https://images.pexels.com/photos/702251/pexels-photo-702251.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='coffee'></img>
       </div>
-      <Search
-        searchTerm={searchTerm}
-        handleSearch={handleSearch}
-      />
+
       <div className="row content">
-        <div className="col-md-2 filter-body" style={{ minWidth: "300px" }}>
-          <div className="card">
+
+
+        {/* Filter */}
+        <div className="col-lg-2" style={{ minWidth: "300px" }}>
+          <div className="card filter-body">
             <div className="card-body">
 
               <CategoryFilter
@@ -132,16 +132,21 @@ const ProductList = () => {
           </div>
         </div>
         {/* Product List */}
-        <div className="col-lg-8 ">
-          <div className="row all-products">
+        <div className="col-lg-8 all-products">
+          <Search
+            searchTerm={searchTerm}
+            handleSearch={handleSearch}
+          />
+          <div className="row ">
             {filteredProducts.map((product) => (
-              <div className="col-xl-4 col-md-6 " key={product.id}>
-                <div className="card mb-4 full-card">
+              <div className="col-xl-4 col-md-6 " >
+                <div className="card full-card" >
                   <img src={product.image} className="card-img-top" alt={product.name} />
                   <div className="card-body coffee-body">
-                    <h5 className="card-title">{product.name}</h5>
+                    <h4 className="card-title">{product.name}</h4>
                     <p className="card-text">{product.price}$</p>
-                    <Link to={`/details/${product.id}`} className="btn btn-detail">View Details</Link>
+                    <span className="borders"></span>
+                    <Link to={`/details/${product.id}`} className="btn-detail">View Details</Link>
                   </div>
                 </div>
               </div>

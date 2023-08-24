@@ -1,0 +1,51 @@
+.container {
+  padding: 20px;
+  justify-items: center;
+  justify-content: center;
+  align-items: start;
+}
+.form-check-label {
+  margin-left: 8px;
+  font-size: 15px;
+  font-family: var(--font1);
+}
+
+.form-check-input input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 20px;
+  font: 14px/20px "Open Sans", Arial, sans-serif;
+  cursor: pointer;
+}
+.form-check-input input[type="checkbox"]:hover + label:hover {
+  color: rgb(143, 166, 219);
+}
+.form-check input[type="checkbox"]:hover + label:before {
+  border: 1px solid #343a3f;
+  box-shadow: 2px 1px 0 #343a3f;
+}
+.form-check input[type="checkbox"] + label:last-child {
+  margin-bottom: 0;
+}
+.form-check input[type="checkbox"] + label:before {
+  content: "";
+  display: block;
+  width: 1.4em;
+  height: 1.4em;
+  border: 1px solid #343a3f;
+  border-radius: 0.2em;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: -2px -1px 0 #343a3f;
+  background: #f3f3f3;
+}
+.form-check input[type="checkbox"]:checked + label:before {
+  border: 2px solid #fff;
+  border-radius: 0.3em;
+  background: #f57979;
+  box-shadow: 2px 1px 0 #50565a;
+}
