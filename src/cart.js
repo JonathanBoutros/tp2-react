@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
@@ -73,6 +74,8 @@ const Cart = () => {
               onChange={(e) => modify(item.id, parseInt(e.target.value))}
             />
             <button onClick={() => removeFromCart(item.id)}>Effacer</button>
+            <br></br>
+            <button><Link to={"/checkout"}>Payer</Link></button>
           </div>
         ))}
       </div>
