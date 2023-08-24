@@ -4,7 +4,6 @@ const CartButton = ({ popUpCart, detail, cart }) => {
 
   const cartPresent = () => {
     const isProductInCart = cart.some(item => item.id === detail.id);
-
     return (
       <div>
         {isProductInCart ? (

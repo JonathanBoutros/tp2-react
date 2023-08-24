@@ -75,6 +75,7 @@ const Details = () => {
           });
     
           const data = await response.json();
+          window.location.reload()
           console.log('Product ajouter:', data);
         } catch (error) {
           console.error('Error ajout cart:', error);
@@ -92,6 +93,7 @@ const Details = () => {
       });
         
         const data = await response.json();
+        window.location.reload()
         console.log('Product ajouter:', data);
       } catch (error) {
         console.error('Error ajout wishlist:', error);
