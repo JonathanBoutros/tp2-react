@@ -74,11 +74,10 @@ const Cart = () => {
               onChange={(e) => modify(item.id, parseInt(e.target.value))}
             />
             <button onClick={() => removeFromCart(item.id)}>Effacer</button>
-            <br></br>
-            <button><Link to={"/checkout"}>Payer</Link></button>
           </div>
         ))}
       </div>
+      <button><Link to={"/checkoutGet"}>Payer</Link></button>
     </div>
   );
 };

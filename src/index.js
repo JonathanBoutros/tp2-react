@@ -9,7 +9,8 @@ import Wishlist from './wishlist';
 import Historique from './historique';
 import CafeList from './pageCafe/cafe';
 import AddCafe from './pageCafe/createCafe';
-import Checkout from './checkout';
+import Checkout from './checkout/checkoutGet';
+import PostCheckout from './checkout/checkoutPost';
 
 const App = () => {
   return (
@@ -17,7 +18,8 @@ const App = () => {
       <div>
         <nav><Nav /></nav>
         <Routes>
-          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkoutPost" element={<PostCheckout/>} />
+          <Route path="/checkoutGet" element={<Checkout />} />
           <Route path="/createCafe" element={<AddCafe />} />
           <Route path="cafe" element={<CafeList />} />
           <Route path="/" element={<ProductList />} />
