@@ -183,6 +183,7 @@ const Details = () => {
           <p className="mb-3"><strong>Description:</strong> {detail.description}</p>
           <p className="mb-3"><strong>Category:</strong> {detail.category?.name}</p>
           <p className="mb-3"><strong>Color:</strong> {detail.color?.name}</p>
+          <SoldStatus detail={detail} sold={sold} />
 
           <QuantityInput
             quantity={quantity}
@@ -209,7 +210,7 @@ const Details = () => {
 
         <div className='col-12 p-0'>
           <div className="card comment-card p-4">
-            <SoldStatus detail={detail} sold={sold} />
+
 
             <CommentSection className="comment-section"
               commentValue={commentValue}
