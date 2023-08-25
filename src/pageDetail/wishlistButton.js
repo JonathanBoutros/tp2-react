@@ -3,21 +3,22 @@ import React from 'react';
 const WishlistButton = ({ detail, popUpWish, wish }) => {
 
 
-    const wishPresent = () => {
-        const isProductInWish = wish.some(item => item.id === detail.id);
-  
-        return (
-          <div>
-            {isProductInWish ? (
-              <p>Ce produit est dans votre Wishlist.</p>
-            ) : (
-              <p>Ce produit n'est pas dans votre Wishlist.</p>
-            )}
-          </div>
-        );
-      }
+  const wishPresent = () => {
+    const isProductInWish = wish.some(item => item.id === detail.id);
 
     return (
+      <div>
+        {isProductInWish ? (
+          <p className='text-success'>Already in wishlist</p>
+        ) : (
+          ''
+        )
+        }
+      </div >
+    );
+  }
+
+  return (
     <div>
       <button onClick={popUpWish} className="btn btn-secondary">
         Add to Wishlist

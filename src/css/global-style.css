@@ -4,3 +4,7 @@
   --font1: Georgia, "Times New Roman", Times, serif;
   --shadow1: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
+body,
+html {
+  height: 100%;
+}

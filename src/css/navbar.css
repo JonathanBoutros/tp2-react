@@ -20,4 +20,5 @@
 .navbar {
   background-color: rgb(255, 240, 228);
   box-shadow: var(--shadow1);
+  z-index: 10;
 }

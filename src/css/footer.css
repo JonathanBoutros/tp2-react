@@ -1,0 +1,13 @@
+footer {
+  text-align: center;
+  padding: 10px 0;
+  height: 30%;
+  position: absolute;
+  width: 100%;
+  border-top: solid black 1px;
+}
+.rights {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 50px;
+  font-size: 12px;
+}

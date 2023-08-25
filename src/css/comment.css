@@ -1,0 +1,42 @@
+.btn-dlt-com {
+  background-color: var(--color2);
+  border-radius: 0;
+  border: 0;
+  padding: 1px 10px;
+  color: white;
+  font-family: var(--font1);
+  transition: ease 0.2s;
+}
+.btn-dlt-com:hover {
+  background-color: rgb(255, 163, 163);
+  color: rgb(0, 0, 0);
+  transform: scale(1.05);
+}
+.com-bubble {
+  border: 0;
+  box-shadow: var(--shadow1);
+}
+.card-text {
+  font-family: var(--font1);
+}
+.comment-input {
+  background-color: white;
+}
+.btn-sub {
+  background-color: rgb(146, 249, 154);
+  transition: ease 0.3s;
+}
+.btn-sub:hover {
+  background-color: rgb(186, 255, 191);
+  transform: scale(1.05);
+}
+.comment-title {
+  margin-bottom: 50px !important;
+  font-size: 40px;
+  color: rgb(44, 44, 44);
+}
+h3,
+label,
+.btn {
+  font-family: var(--font1);
+}

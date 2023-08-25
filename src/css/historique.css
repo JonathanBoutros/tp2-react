@@ -1,8 +1,8 @@
-.title-wrap {
+.hist-title-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 196, 187);
+  background-color: rgb(67, 57, 50);
   border-right: solid black 2px;
 }
 .btn-eff {
@@ -27,14 +27,15 @@
 .btn-eff a:hover {
   text-decoration: none;
 }
-.wish-title {
+.hist-title {
   position: fixed;
   left: 5%;
-  top: 20%;
+  top: 25%;
   transform: translateX(-30%) rotate(-90deg);
   z-index: 10;
   font-size: 100px;
   text-decoration: none;
+  color: rgb(255, 255, 255);
 }
 .img-wish {
   margin-top: 0;
@@ -46,6 +47,7 @@
   padding: 0;
   border: 0;
   box-shadow: var(--shadow1);
+  background-color: var(--color1);
 }
 .wish-body {
 }
@@ -63,24 +65,21 @@
 }
 
 @media (max-width: 1200px) {
-  .wish-title {
-    left: 30px;
+  .hist-title {
+    left: 10px;
+    font-size: 80px;
   }
 }
 @media (max-width: 992px) {
-  .wish-title {
+  .hist-title {
     left: 10px;
     transform: translateX(-35%) rotate(-90deg);
   }
 }
 @media (max-width: 762px) {
-  .wish-title {
+  .hist-title {
     left: 0;
     transform: translateX(-35%) rotate(-90deg);
-    font-size: 80px;
-  }
-}
-@media (max-width: 762px) {
-  .wish-title {
+    font-size: 60px;
   }
 }

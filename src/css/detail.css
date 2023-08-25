@@ -1,0 +1,19 @@
+.img-detail {
+}
+.comment-card {
+  background-color: var(--color1);
+  border: none;
+  box-shadow: var(--shadow1) !important;
+}
+.comment-section {
+}
+.detail-card {
+  background-color: var(--color1);
+  border-bottom: solid rgba(84, 84, 84, 0.752) 1px !important;
+  box-shadow: var(--shadow1);
+}
+p,
+h1,
+h2 {
+  font-family: var(--font1);
+}

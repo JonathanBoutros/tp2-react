@@ -29,7 +29,7 @@ const CafeList = () => {
   return (
     <>
       <div className="container-fluid">
-        <div className="list-content">
+        <div className="list-content mb-5">
           <div className="title-header">
             <h1>Café</h1>
           </div>

@@ -6,6 +6,7 @@ import CartButton from './cartButton';
 import WishlistButton from './wishlistButton';
 import SoldStatus from './soldStatus.js';
 import CommentSection from './commentSection';
+import '../css/detail.css';
 
 const Details = () => {
   const [detail, setDetail] = useState([]);
@@ -26,60 +27,60 @@ const Details = () => {
 
   const handleComment = (event) => {
     const comment = (event.target.value)
-      setCommentValue(comment);
+    setCommentValue(comment);
   };
 
-    useEffect(() => {
-      fetch( 'https://insta-api-api.0vxq7h.easypanel.host/promotions')
+  useEffect(() => {
+    fetch('https://insta-api-api.0vxq7h.easypanel.host/promotions')
       .then((response) => response.json())
       .then((data) => setSold(data))
       .catch((error) => console.error('Error fetch:', error));
-    }, [id]);
+  }, [id]);
 
-    useEffect(() => {
-        fetch(`https://insta-api-api.0vxq7h.easypanel.host/products/${id}`)
-        .then((response) => response.json())
-        .then((data) => setDetail(data))
-        .catch((error) => console.error('Error fetch:', error));
-    }, [id]);
+  useEffect(() => {
+    fetch(`https://insta-api-api.0vxq7h.easypanel.host/products/${id}`)
+      .then((response) => response.json())
+      .then((data) => setDetail(data))
+      .catch((error) => console.error('Error fetch:', error));
+  }, [id]);
 
-    useEffect(() => {
-      fetch('https://insta-api-api.0vxq7h.easypanel.host/wishlist')
+  useEffect(() => {
+    fetch('https://insta-api-api.0vxq7h.easypanel.host/wishlist')
       .then((response) => response.json())
       .then((data) => setWish(data))
       .catch((error) => console.error('Error fetch:', error));
   }, []);
 
-    useEffect(() => {
-      fetch('https://insta-api-api.0vxq7h.easypanel.host/cart')
-        .then((response) => response.json())
-        .then((data) => setCart(data))
-        .catch((error) => console.error('Error fetch:', error));
-    }, []);
+  useEffect(() => {
+    fetch('https://insta-api-api.0vxq7h.easypanel.host/cart')
+      .then((response) => response.json())
+      .then((data) => setCart(data))
+      .catch((error) => console.error('Error fetch:', error));
+  }, []);
 
-    useEffect(() => {
-      fetch(`https://insta-api-api.0vxq7h.easypanel.host/comments?productId=${id}`)
-        .then((response) => response.json())
-        .then((data) => setAllComments(data))
-        .catch((error) => console.error('Error fetch:', error));
-    }, [id]);
+  useEffect(() => {
+    fetch(`https://insta-api-api.0vxq7h.easypanel.host/comments?productId=${id}`)
+      .then((response) => response.json())
+      .then((data) => setAllComments(data))
+      .catch((error) => console.error('Error fetch:', error));
+  }, [id]);
 
-    const addToCart = async (productId, quantity) => {
-        try {
-          const response = await fetch('https://insta-api-api.0vxq7h.easypanel.host/cart/add-product', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ productId, quantity }),
-          });
-    
-          const data = await response.json();
-          console.log('Product ajouter:', data);
-        } catch (error) {
-          console.error('Error ajout cart:', error);
-        }
-      };
+  const addToCart = async (productId, quantity) => {
+    try {
+      const response = await fetch('https://insta-api-api.0vxq7h.easypanel.host/cart/add-product', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ productId, quantity }),
+      });
+
+      const data = await response.json();
+      console.log('Product ajouter:', data);
+    } catch (error) {
+      console.error('Error ajout cart:', error);
+    }
+  };
 
   const addToWishlist = async (productId) => {
     try {
@@ -90,99 +91,105 @@ const Details = () => {
         },
         body: JSON.stringify({ productId }),
       });
-        
+
+      const data = await response.json();
+      console.log('Product ajouter:', data);
+    } catch (error) {
+      console.error('Error ajout wishlist:', error);
+    }
+  };
+
+  const addComment = async () => {
+    if (!commentValue) {
+      setError('Le commentaire ne peut pas être vide.');
+      return;
+    }
+
+    try {
+      const response = await fetch('https://insta-api-api.0vxq7h.easypanel.host/comments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content: commentValue, productId: detail.id }),
+      });
+
+      if (response.ok) {
+        window.location.reload();
         const data = await response.json();
-        console.log('Product ajouter:', data);
-      } catch (error) {
-        console.error('Error ajout wishlist:', error);
+        console.log('Comment added:', data);
       }
-    };
-
-    const addComment = async () => {
-      if (!commentValue) {
-        setError('Le commentaire ne peut pas être vide.');
-        return;
-      }
-  
-      try {
-        const response = await fetch('https://insta-api-api.0vxq7h.easypanel.host/comments', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ content: commentValue, productId: detail.id }),
-        });
-    
-        if (response.ok) {
-          window.location.reload();
-          const data = await response.json();
-          console.log('Comment added:', data);
-        } 
-      } catch (error) {
-        console.error('Error adding comment:', error);
-      }
-    };
-    
-
-      const deleteComment = async (commentId) => {
-        try {
-          const response = await fetch(`https://insta-api-api.0vxq7h.easypanel.host/comments/${commentId}`, {
-            method: 'DELETE',
-          });
-    
-          if (response.ok) {
-            window.location.reload();
-            console.log('Comment deleted');
-          } else {
-            setError("tu ne peux pas effecer un commentaire qui n'est pas le tien")
-          }
-        } catch (error) {
-          
-          console.error('Error deleting comment:', error);
-        }
-      };
-
-    setTimeout(() => {
-      setError("");
-    }, 10000)
-    
-    setTimeout(() => {
-      setText("");
-    }, 3000)
-
-    const popUpWish = () => {
-      addToWishlist(detail.id);
-      setText("ajout reussi a la Wishlist");
-      window.location.reload();
+    } catch (error) {
+      console.error('Error adding comment:', error);
     }
-    
-    const popUpCart = () => {
-      addToCart(id, quantity);
-      setText("ajout reussi au cart");
-      window.location.reload();
+  };
+
+
+  const deleteComment = async (commentId) => {
+    try {
+      const response = await fetch(`https://insta-api-api.0vxq7h.easypanel.host/comments/${commentId}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        window.location.reload();
+        console.log('Comment deleted');
+      } else {
+        setError("tu ne peux pas effecer un commentaire qui n'est pas le tien")
+      }
+    } catch (error) {
+
+      console.error('Error deleting comment:', error);
     }
-  
-    return (
-      <div className="container mt-5">
-        <div className="row">
-          <div className="col-md-6 border border-secondary">
-            <img src={detail.image} alt={detail.name} className="img-fluid" />
+  };
+
+  setTimeout(() => {
+    setError("");
+  }, 10000)
+
+  setTimeout(() => {
+    setText("");
+  }, 3000)
+
+  const popUpWish = () => {
+    addToWishlist(detail.id);
+    setText("ajout reussi a la Wishlist");
+    window.location.reload();
+  }
+
+  const popUpCart = () => {
+    addToCart(id, quantity);
+    setText("ajout reussi au cart");
+    window.location.reload();
+  }
+
+  return (
+    <div className="container mt-5">
+
+      <div className="row detail-card p-4">
+
+        <div className="col-6">
+          <div className="img-detail">
+            <img src={detail.image} alt={detail.name} className="img-fluid rounded" />
           </div>
-          <div className="col-md-6">
-            <h2>{detail.name}</h2>
-            <p className="row prix">
-              <h3>{detail.price}</h3>
-              <span>$CA</span>
-            </p>
-            <SoldStatus detail={detail} sold={sold} />
-            <p className="mb-3">Description: {detail.description}</p>
-            <p className="mb-3">Category: {detail.category?.name}</p>
-            <p className="mb-3">Color: {detail.color?.name}</p>
-    
-            <QuantityInput
-              quantity={quantity}
-              handleQuantityChange={handleQuantityChange}
-            />
+        </div>
+
+        <div className="col-6">
+          <h2 className="display-4">{detail.name}</h2>
+          <p className="lead">
+            <span className="font-weight-bold h3">{detail.price}</span>
+            <span className="h4">$CA</span>
+          </p>
+          <p className="mb-3"><strong>Description:</strong> {detail.description}</p>
+          <p className="mb-3"><strong>Category:</strong> {detail.category?.name}</p>
+          <p className="mb-3"><strong>Color:</strong> {detail.color?.name}</p>
+
+          <QuantityInput
+            quantity={quantity}
+            handleQuantityChange={handleQuantityChange}
+            className="mb-2"
+          />
+          <div className="d-flex justify-content-between mt-2">
             <CartButton
               detail={detail}
               cart={cart}
@@ -193,22 +200,37 @@ const Details = () => {
               wish={wish}
               popUpWish={popUpWish}
             />
-            <CommentSection
+          </div>
+        </div>
+
+      </div>
+
+      <div className='row '>
+
+        <div className='col-12 p-0'>
+          <div className="card comment-card p-4">
+
+            <CommentSection className="comment-section"
               commentValue={commentValue}
               handleComment={handleComment}
               addComment={addComment}
               allComments={allComments}
               deleteComment={deleteComment}
             />
-    
-            <div>{text}</div>
-            <div style={{ color: 'red' }}>{error}</div>
+
+            {text && <div className="mt-3 alert alert-info">{text}</div>}
+            {error && <div className="mt-3 alert alert-danger">{error}</div>}
           </div>
         </div>
+
       </div>
-    );
-    
-    
-  };
-  
-  export default Details;
+
+
+    </div>
+  );
+
+
+
+};
+
+export default Details;

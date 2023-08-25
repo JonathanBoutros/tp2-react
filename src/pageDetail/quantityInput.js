@@ -7,7 +7,7 @@ const QuantityInput = ({ quantity, handleQuantityChange }) => {
       min="1"
       value={quantity}
       onChange={handleQuantityChange}
-      className="form-control mb-2 quantity"
+      className="form-control mb-2 quantity bg-light mb-5"
     />
   );
 };

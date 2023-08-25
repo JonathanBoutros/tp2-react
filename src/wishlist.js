@@ -40,18 +40,28 @@ const Wishlist = () => {
   };
 
   return (
-    <div>
-      <h1>Wishlist</h1>
-      <div>
-        <button onClick={removeAllWish}>Tout Effacer</button>
-        {wishlists.map((wishlist) => (
-          <div key={wishlist.id}>
-            <img src={wishlist.image} alt={wishlist.name} />
-            <p>name: {wishlist.name}</p>
-            <p>Prix: {wishlist.price}$</p>
-            <button onClick={() => removeFromWish(wishlist.id)}>Effacer</button>
+    <div className='container-fluid '>
+      <div className='row d-flex flex-wrap wish-cont'>
+        <div className='col-2 title-wrap'>
+          <h1 className='wish-title'>Wishlist</h1>
+        </div>
+        <div className='col-10 wish-wrap'>
+          <button className='btn-eff' onClick={removeAllWish}>Tout Effacer</button>
+          <div className='row pl-5 pt-4'>
+
+            {wishlists.map((wishlist) => (
+              <div className='card wish-card col-lg-3 col-md-5 col-sm-11 my-3 mx-2' key={wishlist.id}>
+                <img className='card-img-top img-wish' src={wishlist.image} alt={wishlist.name} />
+                <div className='card-body wish-body'>
+                  <p>{wishlist.name}</p>
+                  <p>{wishlist.price}$</p>
+                  <p className='border-wish mb-2'></p>
+                  <p className='btn-dlt-wish' onClick={() => removeFromWish(wishlist.id)}>Effacer</p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

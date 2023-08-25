@@ -11,6 +11,8 @@ import Historique from './historique';
 import CafeList from './pageCafe/cafe';
 import AddCafe from './pageCafe/createCafe';
 import Checkout from './checkout';
+import Footer from './footer';
+
 
 const App = () => {
   return (
@@ -26,7 +28,9 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/historique" element={<Historique />} />
+
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
