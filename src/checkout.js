@@ -20,7 +20,7 @@ const Checkout = () => {
     const [cartId, setId] = useState(0);
 
     const [error, setError] = useState("");
-    
+
     const [formValid, setFormValid] = useState(true);
 
     const [shippingCost, setShippingCost] = useState(0);
@@ -53,7 +53,7 @@ const Checkout = () => {
             setFormValid(true);
         }
     }
-    
+
     const submit = async () => {
         try {
 
@@ -128,177 +128,127 @@ const Checkout = () => {
             .catch((error) => console.error("Error fetch:", error));
     }, []);
 
-  
+
     return (
-        <div>
-            <h1>Payer</h1>
-            <input
-                type="text"
-                name="contactEmail"
-                onChange={(e) => setContactEmail(e.target.value)}
-                placeholder="Email"
-                required
-            />
+        <div className="container">
+            <div className="row">
 
-            <input
-                type="text"
-                name="contactName"
-                onChange={(e) => setContactName(e.target.value)}
-                placeholder="Full Name"
-                required
-            />
+                <div className="col-6">
+                    <h1 className="my-3">Payer</h1>
 
-            <input
-                type="text"
-                name="contactFirstName"
-                onChange={(e) => setContactFirstName(e.target.value)}
-                placeholder="First Name"
-            />
+                    <div className="mb-3">
+                        <input className="form-control" type="text" name="contactEmail" onChange={(e) => setContactEmail(e.target.value)} placeholder="Email" required />
+                    </div>
 
-            <input
-                type="text"
-                name="contactLastName"
-                onChange={(e) => setContactLastName(e.target.value)}
-                placeholder="Last Name"
-            />
+                    <div className="mb-3">
+                        <input className="form-control" type="text" name="contactName" onChange={(e) => setContactName(e.target.value)} placeholder="Full Name" required />
+                    </div>
 
-            <input
-                type="text"
-                name="addressLine1"
-                onChange={(e) => setAddressLine1(e.target.value)}
-                placeholder="Address Line 1"
-            />
+                    <div className="row">
+                        <div className="col-md-6 mb-3">
+                            <input className="form-control" type="text" name="contactFirstName" onChange={(e) => setContactFirstName(e.target.value)} placeholder="First Name" />
+                        </div>
+                        <div className="col-md-6 mb-3">
+                            <input className="form-control" type="text" name="contactLastName" onChange={(e) => setContactLastName(e.target.value)} placeholder="Last Name" />
+                        </div>
+                    </div>
 
-            <input
-                type="text"
-                name="addressLine2"
-                onChange={(e) => setAddressLine2(e.target.value)}
-                placeholder="Address Line 2"
-            />
+                    <div className="mb-3">
+                        <input className="form-control" type="text" name="addressLine1" onChange={(e) => setAddressLine1(e.target.value)} placeholder="Address Line 1" />
+                    </div>
+                    <div className="mb-3">
+                        <input className="form-control" type="text" name="addressLine2" onChange={(e) => setAddressLine2(e.target.value)} placeholder="Address Line 2" />
+                    </div>
 
-            <input
-                type="text"
-                name="city"
-                onChange={(e) => setCity(e.target.value)}
-                placeholder="City"
-            />
+                    <div className="mb-3">
+                        <input className="form-control" type="text" name="city" onChange={(e) => setCity(e.target.value)} placeholder="City" />
+                    </div>
 
-            <input
-                type="text"
-                name="province"
-                onChange={(e) => setProvince(e.target.value)}
-                placeholder="Province"
-            />
+                    <div className="mb-3">
+                        <input className="form-control" type="text" name="province" onChange={(e) => setProvince(e.target.value)} placeholder="Province" />
+                    </div>
 
-            <input
-                type="text"
-                name="postalCode"
-                onChange={(e) => setPostalCode(e.target.value)}
-                placeholder="Postal Code"
-            />
+                    <div className="mb-3">
+                        <input className="form-control" type="text" name="postalCode" onChange={(e) => setPostalCode(e.target.value)} placeholder="Postal Code" />
+                    </div>
 
-            <input
-                type="number"
-                name="contactPhone"
-                onChange={(e) => setContactPhone(e.target.value)}
-                placeholder="Contact Phone"
-            />
+                    <div className="mb-3">
+                        <input className="form-control" type="number" name="contactPhone" onChange={(e) => setContactPhone(e.target.value)} placeholder="Contact Phone" />
+                    </div>
 
-            <input
-                type="text"
-                name="creditCardNumber"
-                onChange={(e) => setCreditCardNumber(e.target.value)}
-                placeholder="4111-1111-1111-1111"
-            />
-            
-            <input
-                type="number"
-                name="creditCardExpirationMonth"
-                onChange={(e) => setCreditCardExpirationMonth(e.target.value)}
-                placeholder="Credit Card Expiration Month"
-            />
+                    <div className="mb-3">
+                        <input className="form-control" type="text" name="creditCardNumber" onChange={(e) => setCreditCardNumber(e.target.value)} placeholder="4111-1111-1111-1111" />
+                    </div>
 
-            <input
-                type="number"
-                name="creditCardExpirationYear"
-                onChange={(e) => setCreditCardExpirationYear(e.target.value)}
-                placeholder="Credit Card Expiration Year"
-            />
+                    <div className="row">
+                        <div className="col-md-6 mb-3">
+                            <input className="form-control" type="number" name="creditCardExpirationMonth" onChange={(e) => setCreditCardExpirationMonth(e.target.value)} placeholder="Expiration Month" />
+                        </div>
 
-            <input
-                type="number"
-                name="creditCardCvv"
-                onChange={(e) => setCreditCardCvv(e.target.value)}
-                placeholder="Credit Card CVV"
-            />
+                        <div className="col-md-6 mb-3">
+                            <input className="form-control" type="number" name="creditCardExpirationYear" onChange={(e) => setCreditCardExpirationYear(e.target.value)} placeholder="Expiration Year" />
+                        </div>
+                    </div>
 
-            <div>
-                <label>Shipping Mode:</label>
+                    <div className="mb-3">
+                        <input className="form-control" type="number" name="creditCardCvv" onChange={(e) => setCreditCardCvv(e.target.value)} placeholder="CVV" />
+                    </div>
+                </div>
 
-                <br></br> 
+                {/* ************* */}
 
-                <input
-                    type="radio"
-                    name="shippingMode"
-                    value="standard"
-                    checked={shippingMode === "standard"}
-                    onChange={() => {
-                        if (total >= 100) {
-                            setShippingMode("standard");
-                            setShippingCost(0);
-                        } else {
-                            setShippingMode("standard");
-                            setShippingCost(10);
-                        }
-                    }}
-                />
+                <div className="col-4">
+                    <div className="mb-3 mt-5">
+                        <label className="mb-3 mt-4">Shipping Mode:</label>
+                        <div className="form-check">
+                            <input className="form-check-input" type="radio" name="shippingMode" value="standard" checked={shippingMode === "standard"}
+                                onChange={() => {
+                                    if (total >= 100) {
+                                        setShippingMode("standard");
+                                        setShippingCost(0);
+                                    } else {
+                                        setShippingMode("standard");
+                                        setShippingCost(10);
+                                    }
+                                }} />
+                            <label className="form-check-label" htmlFor="standard">Standard</label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="radio" name="shippingMode" value="express" checked={shippingMode === "express"}
+                                onChange={() => {
+                                    if (total >= 100) {
+                                        setShippingMode("express");
+                                        setShippingCost(0);
+                                    } else {
+                                        setShippingMode("express");
+                                        setShippingCost(10);
+                                    }
+                                }} />
 
-                <label htmlFor="standard">Standard</label>
+                            <label className="form-check-label" htmlFor="express">Express</label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="radio" name="shippingMode" value="pickup" checked={shippingMode === "pickup"}
+                                onChange={() => {
+                                    setShippingMode("pickup");
+                                    setShippingCost(0);
+                                }} />
 
-                <br></br>
-                
-                <input
-                    type="radio"
-                    name="shippingMode"
-                    value="express"
-                    checked={shippingMode === "express"}
-                    onChange={() => {
-                        if (total >= 100) {
-                            setShippingMode("express");
-                            setShippingCost(0);
-                        } else {
-                            setShippingMode("express");
-                            setShippingCost(10);
-                        }
-                    }}
-                />
-                <label htmlFor="express">Express</label>
-                
-                <br></br>
+                            <label className="form-check-label" htmlFor="pickup">Pickup</label>
+                        </div>
+                    </div>
+                    <p className="mt-3">Total: {total + shippingCost}</p>
+                    <p>Cart ID: {cartId}</p>
 
-                <input
-                    type="radio"
-                    name="shippingMode"
-                    value="pickup"
-                    checked={shippingMode === "pickup"}
-                    onChange={() => {
-                        setShippingMode("pickup");
-                        setShippingCost(0);
-                    }}
-                />
-                <label htmlFor="pickup">Pickup</label>
+                    <button type="button" className="btn btn-primary" onClick={() => submit()}>Submit</button>
+
+                    <div className="mt-3">{working}</div>
+                    <div className="mt-3 text-danger">{error}</div>
+                </div>
             </div>
 
-            <p>Total: {total + shippingCost}</p>
-
-            <p>Cart ID: {cartId}</p>
-
-            <button onClick={() => submit()}>submit</button>
-
-            <div>{working}</div>
-            <div style={{ color: "red" }}>{error}</div>
         </div>
-  );
+    );
 };
 
 export default Checkout;

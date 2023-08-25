@@ -49,8 +49,6 @@
   box-shadow: var(--shadow1);
   background-color: var(--color1);
 }
-.wish-body {
-}
 .border-wish {
   border-bottom: solid 2px black;
 }

@@ -9,7 +9,7 @@ const Footer = () => {
                 <div class="row  ">
                     <div class="col-12 ">
                         <ul class="list-unstyled list d-flex justify-content-center ">
-                            <li class="mx-3"><a href="#" class="text-dark text-decoration-none">Home</a></li>
+                            <li class="mx-3"><a href="/" class="text-dark text-decoration-none">Home</a></li>
                             <li class="mx-3"><a href="#" class="text-dark text-decoration-none">Gift Card</a></li>
                             <li class="mx-3"><a href="#" class="text-dark text-decoration-none">Customer Service</a></li>
                             <li class="mx-3"><a href="#" class="text-dark text-decoration-none">Discount</a></li>

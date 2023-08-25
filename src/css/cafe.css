@@ -106,7 +106,7 @@ h1 {
 }
 @media (max-width: 1200px) {
   .cofe {
-    width: 40%; /* Adjust based on preference */
+    width: 40%;
   }
   .create-container {
     width: 80%;
@@ -115,7 +115,7 @@ h1 {
 
 @media (max-width: 768px) {
   .cofe {
-    width: 80%; /* Adjust based on preference */
+    width: 80%;
   }
   .create-container {
     justify-content: center;

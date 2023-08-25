@@ -1,11 +1,7 @@
-.img-detail {
-}
 .comment-card {
   background-color: var(--color1);
   border: none;
   box-shadow: var(--shadow1) !important;
-}
-.comment-section {
 }
 .detail-card {
   background-color: var(--color1);

@@ -47,8 +47,6 @@
   border: 0;
   box-shadow: var(--shadow1);
 }
-.wish-body {
-}
 .border-wish {
   border-bottom: solid 2px black;
 }
@@ -78,9 +76,5 @@
     left: 0;
     transform: translateX(-35%) rotate(-90deg);
     font-size: 80px;
-  }
-}
-@media (max-width: 762px) {
-  .wish-title {
   }
 }
