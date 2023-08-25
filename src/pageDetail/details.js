@@ -76,6 +76,7 @@ const Details = () => {
       });
 
       const data = await response.json();
+      window.location.reload()
       console.log('Product ajouter:', data);
     } catch (error) {
       console.error('Error ajout cart:', error);
@@ -93,6 +94,7 @@ const Details = () => {
       });
 
       const data = await response.json();
+      window.location.reload()
       console.log('Product ajouter:', data);
     } catch (error) {
       console.error('Error ajout wishlist:', error);
@@ -143,6 +145,16 @@ const Details = () => {
     }
   };
 
+  const popUpWish = () => {
+    addToWishlist(detail.id);
+    setText("ajout reussi a la Wishlist");
+  }
+
+  const popUpCart = () => {
+    addToCart(id, quantity);
+    setText("ajout reussi au cart");
+  }
+
   setTimeout(() => {
     setError("");
   }, 10000)
@@ -150,18 +162,6 @@ const Details = () => {
   setTimeout(() => {
     setText("");
   }, 3000)
-
-  const popUpWish = () => {
-    addToWishlist(detail.id);
-    setText("ajout reussi a la Wishlist");
-    window.location.reload();
-  }
-
-  const popUpCart = () => {
-    addToCart(id, quantity);
-    setText("ajout reussi au cart");
-    window.location.reload();
-  }
 
   return (
     <div className="container mt-5">
@@ -209,6 +209,7 @@ const Details = () => {
 
         <div className='col-12 p-0'>
           <div className="card comment-card p-4">
+            <SoldStatus detail={detail} sold={sold} />
 
             <CommentSection className="comment-section"
               commentValue={commentValue}
